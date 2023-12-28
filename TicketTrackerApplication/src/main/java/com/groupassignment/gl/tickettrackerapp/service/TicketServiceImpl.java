@@ -35,7 +35,7 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public void save(Ticket ticket) {
-		
+
 		String date = java.time.LocalDate.now().toString();
 		ticket.setTicketCreated(date);
 		ticketdao.save(ticket);
@@ -50,11 +50,12 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public List<Ticket> filter(String expression) {
-		List<Ticket> ticketList =this.findAll();
+		List<Ticket> ticketList = this.findAll();
 		List<Ticket> filteredList = ticketList.stream()
-                .filter(ticket -> ticket.getTicketTitle().toLowerCase().contains(expression.toLowerCase()) || ticket.getTicketDesc().toLowerCase().contains(expression.toLowerCase()))
-                .collect(Collectors.toList());
+				.filter(ticket -> ticket.getTicketTitle().toLowerCase().contains(expression.toLowerCase())
+						|| ticket.getTicketDesc().toLowerCase().contains(expression.toLowerCase()))
+				.collect(Collectors.toList());
 		return filteredList;
-	}	
+	}
 
 }

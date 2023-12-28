@@ -23,22 +23,26 @@
 		</ul>
 	</nav>
 
-	<div  class="container mt-5 pt-2">
+	<div class="container mt-5 pt-2">
 		<h1>List Of Tickets</h1>
 		<hr>
-		<div th:if="${param.success}"><div class="alert alert-info"> Ticket saved Successfully!
-			
-			
-		</div></div>
-		<div th:if="${param.del}"><div class="alert alert-danger"> Ticket deleted Successfully!
-			
-			
-		</div></div>
-		<form class="form-inline" th:action="@{/tickets/searchTicket/submit}" th:object="${tickets}"  method="get">
-			<input class="form-control mr-sm-2"  type="text" id="expression" placeholder="Search" name="expression">
+		<div th:if="${param.success}">
+			<div class="alert alert-info"> Ticket saved Successfully!
+
+
+			</div>
+		</div>
+		<div th:if="${param.del}">
+			<div class="alert alert-danger"> Ticket deleted Successfully!
+
+
+			</div>
+		</div>
+		<form class="form-inline" th:action="@{/tickets/searchTicket/submit}" th:object="${tickets}" method="get">
+			<input class="form-control mr-sm-2" type="text" id="expression" placeholder="Search" name="expression">
 			<button class="btn btn-primary" type="submit">Search</button>
 		</form>
-<br>
+		<br>
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -61,7 +65,7 @@
 						<a th:href="@{/tickets/showTicketFormForView/{id}(id=${ticket.id})}"><button type="button"
 								class="btn btn-info">View</button></a>
 						<a th:href="@{/tickets/delete/{id}(id=${ticket.id})}" title="Delete"
-							onclick="if (!(confirm('Are you sure?'))) return false" ><button type="button"
+							onclick="if (!(confirm('Are you sure?'))) return false"><button type="button"
 								class="btn btn-danger">Delete</button></a>
 					</td>
 
@@ -69,11 +73,11 @@
 			</tbody>
 		</table>
 	</div>
-	<div style="margin-top:100px; padding:10px; background-color: lightgray; text-align: center; font-style: bold;">
-	<footer >
-    <p>Copyright &copy; 2023 Great Learning All Rigts Reserved</p>
-</footer>
-</div>
+	<div style="margin-top:150px; padding:10px; background-color: lightgray; text-align: center;">
+		<footer>
+			<p>Copyright &copy; 2023 Great Learning All Rigts Reserved</p>
+		</footer>
+	</div>
 </body>
 
 </html>

@@ -21,37 +21,37 @@ public class TicketController {
 
 	@Autowired
 	TicketService ticketService;
-	
+
 	@GetMapping("/list")
 	public String findAll(Model model) {
 		List<Ticket> tickets = ticketService.findAll();
-		
+
 		model.addAttribute("tickets", tickets);
 		return "tickets/list-tickets";
 
 	}
-	
+
 	@GetMapping("/showTicketFormForAdd")
 	public String showTicketFormForAdd(Model model) {
-		Ticket tickets= new Ticket();
+		Ticket tickets = new Ticket();
 		model.addAttribute("tickets", tickets);
 		model.addAttribute("enableSubmit", true);
 		model.addAttribute("type", "new");
 		return "tickets/ticket-form";
 	}
-	
+
 	@PostMapping("/saveTicket")
 	public String saveTicket(Model model, @ModelAttribute("ticket") Ticket ticket) {
 		ticketService.save(ticket);
 		return "redirect:/tickets/list?success";
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String delete(Model model, @PathVariable int id) {
 		ticketService.deleteById(id);
 		return "redirect:/tickets/list?del";
 	}
-	
+
 	@GetMapping("/showTicketFormForEdit/{id}")
 	public String showTicketFormForEdit(Model model, @PathVariable int id) {
 		Ticket ticket = ticketService.findById(id);
@@ -60,16 +60,16 @@ public class TicketController {
 		model.addAttribute("type", "edit");
 		return "tickets/ticket-form";
 	}
-	
+
 	@GetMapping("/searchTicket/{expression}")
-	public String searchTicket(Model model,@RequestParam  String expression) {
-		if(expression=="")
+	public String searchTicket(Model model, @RequestParam String expression) {
+		if (expression == "")
 			return "redirect:/tickets/list";
-		List<Ticket>tickets = ticketService.filter(expression);
+		List<Ticket> tickets = ticketService.filter(expression);
 		model.addAttribute("tickets", tickets);
 		return "tickets/list-tickets";
 	}
-	
+
 	@GetMapping("/showTicketFormForView/{id}")
 	public String showTicketFormForView(Model model, @PathVariable int id) {
 		Ticket ticket = ticketService.findById(id);
@@ -78,5 +78,5 @@ public class TicketController {
 		model.addAttribute("type", "view");
 		return "tickets/ticket-form";
 	}
-	
+
 }

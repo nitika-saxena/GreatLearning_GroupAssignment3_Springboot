@@ -24,19 +24,23 @@
 		</ul>
 	</nav>
 
-	<div class="container mt-5 pt-2" style="border:gray; border-width:1px; border-style:solid; width: 50%; margin-left: 25%;" >
+	<div class="container mt-5 pt-2"
+		style="border:gray; border-width:1px; border-style:solid; width: 50%; margin-left: 25%;">
 		<div class="panel-heading">
-			
-			<h3 th:if="${type == 'new'}" style="background-color: lightgray; padding: 10px; text-align: center;">Create Ticket</h3>
-			<h3 th:if="${type == 'edit'}" style="background-color: lightgray; padding: 10px; text-align: center;">Edit Ticket</h3>
-			<h3 th:if="${type == 'view'}" style="background-color: lightgray; padding: 10px; text-align: center;">Ticket Details</h3>
-			
+
+			<h3 th:if="${type == 'new'}" style="background-color: lightgray; padding: 10px; text-align: center;">Create
+				Ticket</h3>
+			<h3 th:if="${type == 'edit'}" style="background-color: lightgray; padding: 10px; text-align: center;">Edit
+				Ticket</h3>
+			<h3 th:if="${type == 'view'}" style="background-color: lightgray; padding: 10px; text-align: center;">Ticket
+				Details</h3>
+
 		</div>
 		<div class="panel-body">
 
 			<form th:action="@{/tickets/saveTicket}" th:object="${tickets}" method="post">
 				<div class="form-group">
-					<input type="hidden" th:field="*{id}"/>
+					<input type="hidden" th:field="*{id}" />
 					<label for="ticketTitle">Title</label>
 					<input type="text" class="form-control" placeholder="Enter Ticket Title" name="ticketTitle"
 						th:field="*{ticketTitle}" required="required" />
@@ -51,17 +55,19 @@
 					<textarea type="text" class="form-control" placeholder="Enter Content" name="content"
 						th:field="*{content}" required="required"></textarea>
 				</div>
-				
-				<button th:disabled="${enableSubmit} ? false : true" type="submit" class="btn btn-primary">Submit</button>
+
+				<button th:disabled="${enableSubmit} ? false : true" type="submit"
+					class="btn btn-primary">Submit</button>
 			</form>
 			<br>
 		</div>
 	</div>
-<div style="margin-top:100px; padding:10px; background-color: lightgray; text-align: center;">
-	<footer >
-    <p>Copyright &copy; 2023 Great Learning All Rigts Reserved</p>
-</footer>
-</div>
+	<div style="margin-top:150px; padding:10px; background-color: lightgray; text-align: center;">
+		<footer>
+			<p>Copyright &copy; 2023 Great Learning All Rigts Reserved</p>
+		</footer>
+	</div>
 
 </body>
+
 </html>
